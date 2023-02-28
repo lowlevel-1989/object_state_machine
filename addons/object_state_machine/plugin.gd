@@ -7,7 +7,7 @@ extends EditorPlugin
 
 func _enter_tree() -> void:
 	# Initialization of the plugin goes here.
-	print("Object State Machine 0.6.0")
+	print("Object State Machine 0.6.1")
 
 
 func _exit_tree() -> void:

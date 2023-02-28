@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3vbra5s3lbhg"]
+[gd_scene load_steps=4 format=3 uid="uid://cgq23jm0qh12t"]
 
 [ext_resource type="PackedScene" uid="uid://lncw32q6u87o" path="res://addons/object_state_machine/demo/godot_v4/player/player.tscn" id="1_q2k2c"]
+[ext_resource type="Texture2D" uid="uid://byuhgsajxx5g7" path="res://addons/object_state_machine/demo/godot_v4/SM.png" id="1_ruj1g"]
 
 [sub_resource type="GDScript" id="GDScript_57odg"]
 resource_name = "physics"
@@ -11,6 +12,12 @@ func _draw() -> void:
 "
 
 [node name="Demo" type="Node2D"]
+
+[node name="Sm" type="Sprite2D" parent="."]
+modulate = Color(0.71, 0.38, 0.15, 1)
+position = Vector2(509, 166)
+scale = Vector2(0.444, 0.444)
+texture = ExtResource("1_ruj1g")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_q2k2c")]
 position = Vector2(596, 157)

@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.1] - 2023-02-28
+
+### Changed
+- KinematicBody2D platform demo for Godot v3 (update)
+- CharacterBody2D platform demo for Godot v4 (update)
+
 ## [0.6.0] - 2023-02-28
 
 ### Added

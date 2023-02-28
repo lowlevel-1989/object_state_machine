@@ -42,8 +42,8 @@ func _physics_process(delta : float) -> void:
 		# el angulo es negativo. En godot v4 esto ya no pasa
 		if rad2deg(acos(n.dot(Vector2.UP))) > 45:
 			self.player.velocity.y = 0
-			self.player.move_and_collide(
-							self.player.velocity * delta)
+			self.player.move_and_slide(
+							self.player.velocity, Vector2.UP)
 			return
 
 	# En godot v3 si quieres que suba bien las pendientes, se debe

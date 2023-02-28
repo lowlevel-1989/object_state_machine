@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://addons/object_state_machine/demo/godot_v3/player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/object_state_machine/demo/godot_v3/SM.png" type="Texture" id=2]
 
 [sub_resource type="GDScript" id=1]
 resource_name = "physics"
@@ -11,6 +12,12 @@ func _draw() -> void:
 "
 
 [node name="Demo" type="Node2D"]
+
+[node name="Sm" type="Sprite" parent="."]
+modulate = Color( 0.713726, 0.388235, 0.14902, 1 )
+position = Vector2( 509, 166 )
+scale = Vector2( 0.443694, 0.443694 )
+texture = ExtResource( 2 )
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 1 )]
 position = Vector2( 596, 157 )
