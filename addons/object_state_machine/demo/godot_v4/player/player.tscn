@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://xsbn5g6dreuy"]
+[gd_scene load_steps=9 format=3 uid="uid://lncw32q6u87o"]
 
-[ext_resource type="Script" path="res://addons/object_state_machine/demo/player/player.gd" id="1_kwc7e"]
-[ext_resource type="Script" path="res://addons/object_state_machine/demo/player/state/idle.gd" id="2_o2sa6"]
-[ext_resource type="Script" path="res://addons/object_state_machine/demo/player/state/walk.gd" id="3_wnnmx"]
-[ext_resource type="Script" path="res://addons/object_state_machine/demo/player/state/air.gd" id="4_wfjhb"]
-[ext_resource type="Script" path="res://addons/object_state_machine/demo/player/state/jump.gd" id="5_unena"]
-[ext_resource type="Script" path="res://addons/object_state_machine/demo/player/state/fall.gd" id="6_ka5lt"]
+[ext_resource type="Script" path="res://addons/object_state_machine/demo/godot_v4/player/player.gd" id="1_kwc7e"]
+[ext_resource type="Script" path="res://addons/object_state_machine/demo/godot_v4/player/state/idle.gd" id="2_o2sa6"]
+[ext_resource type="Script" path="res://addons/object_state_machine/demo/godot_v4/player/state/walk.gd" id="3_wnnmx"]
+[ext_resource type="Script" path="res://addons/object_state_machine/demo/godot_v4/player/state/air.gd" id="4_wfjhb"]
+[ext_resource type="Script" path="res://addons/object_state_machine/demo/godot_v4/player/state/jump.gd" id="5_unena"]
+[ext_resource type="Script" path="res://addons/object_state_machine/demo/godot_v4/player/state/fall.gd" id="6_ka5lt"]
+[ext_resource type="Script" path="res://addons/object_state_machine/node_state_machine.gd" id="7_tb00h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0jl5k"]
 radius = 17.0
@@ -43,3 +44,6 @@ offset_top = -2.0
 offset_right = 30.0
 offset_bottom = 2.0
 color = Color(0.8, 0.180392, 0.956863, 1)
+
+[node name="NodeStateMachine" type="Node" parent="."]
+script = ExtResource("7_tb00h")

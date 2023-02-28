@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d3vbra5s3lbhg"]
 
-[ext_resource type="PackedScene" uid="uid://dgaxtiwfuoev" path="res://addons/object_state_machine/demo/player/player.tscn" id="1_q2k2c"]
+[ext_resource type="PackedScene" uid="uid://lncw32q6u87o" path="res://addons/object_state_machine/demo/godot_v4/player/player.tscn" id="1_q2k2c"]
 
 [sub_resource type="GDScript" id="GDScript_57odg"]
 resource_name = "physics"
