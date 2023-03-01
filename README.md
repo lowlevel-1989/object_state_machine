@@ -14,9 +14,7 @@ or
 
 - To create a state machine add the NodeStateMachine to the desired object as shown in the demo.
 
-### Class
-
-#### StateAbstract, abstract class that allows to define the different states
+### Class StateAbstract, abstract class that allows to define the different states
 
 to define a new state you must create a class from the StateAbstract class and define its behavior.
 
@@ -39,7 +37,7 @@ to define a new state you must create a class from the StateAbstract class and d
 ##### private methods
 - void    StateAbstract::_set_name()
 
-#### StateMachine
+### Class StateMachine
 in charge of administering the states.
 
 ##### signals
