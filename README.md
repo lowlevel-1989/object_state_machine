@@ -33,6 +33,7 @@ to define a new state you must create a class from the StateAbstract class and d
 - void    StateAbstract::_process(delta : float)
 - void    StateAbstract::_physics_process(delta : float)
 - void    StateAbstract::_integrate_forces(state : Object)
+- void    StateAbstract::_confirm_transition()
 
 ##### private methods
 - void    StateAbstract::_set_name()
