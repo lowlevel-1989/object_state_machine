@@ -1,4 +1,4 @@
-@tool
+tool
 extends GraphNode
 
 enum {FIRST, NORMAL, LAST}
@@ -7,7 +7,7 @@ var _mode_state : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.connect("close_request", _on_close_request)
+	self.connect("close_request", self, "_on_close_request")
 
 func _on_close_request() -> void:
 	# TODO: pasar por argumento GraphEdit y evitar utilizar get_parent
@@ -15,7 +15,7 @@ func _on_close_request() -> void:
 	# de eliminarlo
 	var connections : Array = get_parent().get_connection_list()
 
-	# Limpio las conexiones porque de resto queda una linea colgando
+	# Limpio las conexiones porque de resto queda una linea colgada
 	get_parent().clear_connections()
 
 	# Eliminamos todos a los que nos conectamos

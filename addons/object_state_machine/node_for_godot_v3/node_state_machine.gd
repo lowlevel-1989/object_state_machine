@@ -1,7 +1,4 @@
-# requiere ser tool, para poder llamar sus metodos desde nuestro plugin
-# esto es un problema ya que tenemos que adaptarlo a godot v3 tambien y de
-# momento no se puede realizar de manera automatica con preprocesado
-@tool
+tool
 extends Node
 
 class_name NodeStateMachine
@@ -16,7 +13,7 @@ func _init() -> void:
 	self._state_machine = self.class_state_machine.new()
 
 	if not (
-		self._state_machine.has_method("is_class_state_machine") && \
+		self._state_machine.has_method("is_class_state_machine") and \
 			self._state_machine.is_class_state_machine()):
 		queue_free()
 		return
@@ -31,7 +28,7 @@ func _init() -> void:
 
 func get_stage_machine() -> Object:
 	return self._state_machine
-	
+
 	# metodo publico
 # metodos especiales, para detectar si es un estado o una maquina de estado
 func is_class_state_machine() -> bool:

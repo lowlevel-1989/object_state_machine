@@ -6,7 +6,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fe825"]
 
-[node name="GraphNode" type="GraphNode"]
+[node name="state_id_1747514878962" type="GraphNode"]
 self_modulate = Color(1, 1, 1, 0.59)
 offset_right = 140.0
 offset_bottom = 105.0

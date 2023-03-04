@@ -23,16 +23,20 @@ var _object_ref : NodeStateMachine
 
 func _enter_tree() -> void:
 	# Initialization of the plugin goes here.
-	print("Object State Machine 0.6.1")
-	
 	self._godot_version = Engine.get_version_info().major
-	self._graph_editor_path = GRAPH_EDITOR_PATH.format({"major": _godot_version})
-	
+	self._graph_editor_path = GRAPH_EDITOR_PATH.format(
+																		{"major": _godot_version})
+
 	if not ResourceLoader.exists(self._graph_editor_path):
 		return
-	
+
 	self._graph_editor_init = true
-	self._graph_editor = load(self._graph_editor_path).instantiate()
+
+	if self._godot_version > 3:
+		self._graph_editor = load(self._graph_editor_path).instantiate()
+	else:
+		self._graph_editor = load(self._graph_editor_path).instance()
+
 	self._graph_editor_button = add_control_to_bottom_panel(
 									self._graph_editor, "State Machine")
 	self._make_visible(false)
@@ -42,8 +46,12 @@ func _exit_tree() -> void:
 	if self._graph_editor_init:
 		remove_control_from_bottom_panel(self._graph_editor)
 		self._graph_editor_button.free()
-	
+
 	self._graph_editor_init = false
+
+# add support virtual Godot v3
+func handles(object : Object) -> bool:
+	return self._handles(object)
 
 # valida el objeto que seleccionaron desde el arbol de nodos
 func _handles(object: Object) -> bool:
@@ -51,10 +59,20 @@ func _handles(object: Object) -> bool:
 		object.has_method("is_class_state_machine") && \
 			object.is_class_state_machine()))
 
+# add support virtual Godot v3
+func make_visible(visible: bool) -> void:
+	self._make_visible(visible)
+
 # Se ejecuta luego de _handles para alida cuando es visible
 # el tab (State Machine) en el editor de godot
 func _make_visible(visible: bool) -> void:
+	if not visible:
+		hide_bottom_panel()
 	self._graph_editor_button.visible = visible
+
+# add support virtual Godot v3
+func edit(object: Object) -> void:
+	self._edit(object)
 
 # _edit se llama cuando se selecciona o se cambia de seleccion en el arbol
 # de nodos del editor

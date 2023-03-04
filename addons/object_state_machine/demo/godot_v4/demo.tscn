@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cgq23jm0qh12t"]
 
-[ext_resource type="PackedScene" uid="uid://lncw32q6u87o" path="res://addons/object_state_machine/demo/godot_v4/player/player.tscn" id="1_q2k2c"]
 [ext_resource type="Texture2D" uid="uid://byuhgsajxx5g7" path="res://addons/object_state_machine/demo/godot_v4/SM.png" id="1_ruj1g"]
+[ext_resource type="PackedScene" uid="uid://dch34du25f3cl" path="res://addons/object_state_machine/demo/godot_v4/player/player.tscn" id="2_3r0m8"]
 
 [sub_resource type="GDScript" id="GDScript_57odg"]
 resource_name = "physics"
@@ -19,7 +19,7 @@ position = Vector2(509, 166)
 scale = Vector2(0.444, 0.444)
 texture = ExtResource("1_ruj1g")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_q2k2c")]
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_3r0m8")]
 position = Vector2(596, 157)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

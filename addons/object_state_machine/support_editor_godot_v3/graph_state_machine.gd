@@ -1,4 +1,4 @@
-@tool
+tool
 extends GraphEdit
 
 var NodeState : Resource
@@ -21,10 +21,10 @@ var _state_count : int
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	NodeState = preload(
-		"res://addons/object_state_machine/support_editor_godot_v4/graph_node_state.tscn")
+		"res://addons/object_state_machine/support_editor_godot_v3/graph_node_state.tscn")
 
 	ButtonNode = preload(
-		"res://addons/object_state_machine/support_editor_godot_v4/button_node.tscn")
+		"res://addons/object_state_machine/support_editor_godot_v3/button_node.tscn")
 
 	# si esta en el metadata se actualiza al cargar los datos
 	# esto es utilizado para asignar los nombres a los estados
@@ -34,11 +34,11 @@ func _ready():
 	# habilita desconectar y reconectar los cables
 	set_right_disconnects(true)
 
-	_button_first_state    = ButtonNode.instantiate()
-	_button_normal_state   = ButtonNode.instantiate()
-	_button_last_state     = ButtonNode.instantiate()
-	_button_new_metadata   = ButtonNode.instantiate()
-	_button_save_metadata  = ButtonNode.instantiate()
+	_button_first_state    = ButtonNode.instance()
+	_button_normal_state   = ButtonNode.instance()
+	_button_last_state     = ButtonNode.instance()
+	_button_new_metadata   = ButtonNode.instance()
+	_button_save_metadata  = ButtonNode.instance()
 
 	_button_first_state.text   = "First State"
 	_button_normal_state.text  = "Normal State"
@@ -52,48 +52,55 @@ func _ready():
 	get_zoom_hbox().add_child(_button_new_metadata)
 	get_zoom_hbox().add_child(_button_save_metadata)
 
-	_button_first_state.connect("button_down", _on_button_first_state)
-	_button_normal_state.connect("button_down", _on_button_normal_state)
-	_button_last_state.connect("button_down",  _on_button_last_state)
+	_button_first_state.connect("button_down", self, "_on_button_first_state")
+	_button_normal_state.connect("button_down", self, "_on_button_normal_state")
+	_button_last_state.connect("button_down",  self, "_on_button_last_state")
 
-	_button_new_metadata.connect("button_down",  _on_button_new)
-	_button_save_metadata.connect("button_down",  _on_button_save)
+	_button_new_metadata.connect("button_down", self, "_on_button_new")
+	_button_save_metadata.connect("button_down", self, "_on_button_save")
 
-	connect("node_selected", _on_node_selected)
-	connect("popup_request", _on_popup_request)
-	connect("connection_request", _on_connection_request)
-	connect("disconnection_request", _on_disconnection_request)
+	connect("node_selected", self, "_on_node_selected")
+	connect("popup_request", self, "_on_popup_request")
+	connect("connection_request", self, "_on_connection_request")
+	connect("disconnection_request", self, "_on_disconnection_request")
 
 func _on_popup_request(_position : Vector2) -> void:
 	var _inv_zoom : float = 1/zoom
 	var _new_node : GraphNode
-	_new_node = NodeState.instantiate()
+	_new_node = NodeState.instance()
 
 	# Asignar id unido
 	_new_node.set_name("state_{id}".format({"id": self._state_count}))
 	self._state_count += 1
 
-	# Se agrega a la visor teniendo en cuenta el scroll y la posicion del mouse
-	_new_node.position_offset = ( _position +  scroll_offset )
+	# se escala la posicion con el valor del zoom
+	#_new_node.offset *= _inv_zoom
+	add_child(_new_node)
+
+	# En godot v3 me da error la posion cuando trabajo desde el
+	# editor, la solucion temporal que tengo es restar la posición
+	# global ya que esta representa el desplazamiento inicial
+	_new_node.offset = _position + scroll_offset - \
+							_new_node.rect_global_position
 
 	# se agrega un offset para centrar el nodo en el cursor
-	_new_node.position_offset -= _new_node.size / 2
+	_new_node.offset -= _new_node.rect_size / 2
 
-	# se escala la posicion con el valor del zoom
-	_new_node.position_offset *= _inv_zoom
-	_new_node.set_mode(_new_node.NORMAL)
-	add_child(_new_node)
+	# En godot v3 me da problema el zoom cuando trabajo desde el
+	# editor, asi que directamente lo desactivare
 
 func _on_node_selected(node : Node) -> void:
 	self._state_seleted = node
 
 func _on_button_normal_state() -> void:
-	if self._state_seleted and get_child_count() > 0:
+	if self._state_seleted and \
+				self._state_seleted.has_method("get_mode"):
 		self._state_seleted.set_mode(self._state_seleted.NORMAL)
 
 func _on_button_last_state() -> void:
 	for node in get_children():
-		if node.get_mode() == node.LAST:
+		if node.has_method("get_mode") && \
+				node.get_mode() == node.LAST:
 			node.set_mode(node.NORMAL)
 
 	if self._state_seleted and get_child_count() > 0:
@@ -102,21 +109,22 @@ func _on_button_last_state() -> void:
 func _on_button_first_state() -> void:
 	# solo asignamos un estado como principal
 	for node in get_children():
-		if node.get_mode() == node.FIRST:
+		if node.has_method("get_mode") && \
+				node.get_mode() == node.FIRST:
 			node.set_mode(node.NORMAL)
 
 	if self._state_seleted and get_child_count() > 0:
 		self._state_seleted.set_mode(self._state_seleted.FIRST)
 
 func _on_connection_request(
-	from_node: StringName, from_port: int,
-	to_node: StringName, to_port: int) -> void:
+	from_node: String, from_port: int,
+	to_node: String, to_port: int) -> void:
 		if from_node != to_node:
 			connect_node(from_node, from_port, to_node, to_port)
 
 func _on_disconnection_request(
-	from_node: StringName, from_port: int,
-	to_node: StringName, to_port: int):
+	from_node: String, from_port: int,
+	to_node: String, to_port: int):
 	disconnect_node(from_node, from_port, to_node, to_port)
 
 func _on_button_new() -> void:
@@ -141,7 +149,7 @@ func _on_button_save() -> void:
 			nodes_name.append(node.name)
 			nodes_info.append(node.get_info())
 			nodes_mode.append(node.get_mode())
-			nodes_offset.append(node.position_offset)
+			nodes_offset.append(node.offset)
 
 	_state_machine.set_meta("graph_ref_nodes_name",   nodes_name)
 	_state_machine.set_meta("graph_ref_nodes_info",   nodes_info)
@@ -184,8 +192,8 @@ func load_graph() -> void:
 
 	for index in range(node_info.size()):
 		var new_state : GraphNode
-		new_state = NodeState.instantiate()
-		new_state.position_offset = node_offset[index]
+		new_state = NodeState.instance()
+		new_state.offset = node_offset[index]
 		new_state.set_name(node_name[index])
 		new_state.set_info(node_info[index])
 		new_state.set_mode(node_mode[index])

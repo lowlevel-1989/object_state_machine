@@ -23,10 +23,10 @@ func get_owner() -> Node:
 
 # publica, permite cambiar de estado
 func transition_to(state: StateAbstract) -> void:
-	if not (state.has_method("is_class_state") && state.is_class_state()):
+	if not (state.has_method("is_class_state") and state.is_class_state()):
 		return
 
-	if self._state_machine.has_method("is_class_state_machine") && \
+	if self._state_machine.has_method("is_class_state_machine") and \
 			self._state_machine.is_class_state_machine():
 		self._state_machine.transition_to(state)
 

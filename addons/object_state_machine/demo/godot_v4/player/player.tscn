@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://lncw32q6u87o"]
+[gd_scene load_steps=9 format=3 uid="uid://dch34du25f3cl"]
 
 [ext_resource type="Script" path="res://addons/object_state_machine/demo/godot_v4/player/player.gd" id="1_kwc7e"]
 [ext_resource type="Script" path="res://addons/object_state_machine/demo/godot_v4/player/state/idle.gd" id="2_o2sa6"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://addons/object_state_machine/demo/godot_v4/player/state/air.gd" id="4_wfjhb"]
 [ext_resource type="Script" path="res://addons/object_state_machine/demo/godot_v4/player/state/jump.gd" id="5_unena"]
 [ext_resource type="Script" path="res://addons/object_state_machine/demo/godot_v4/player/state/fall.gd" id="6_ka5lt"]
-[ext_resource type="Script" path="res://addons/object_state_machine/node_state_machine.gd" id="7_tb00h"]
+[ext_resource type="Script" path="res://addons/object_state_machine/node_for_godot_v4/node_state_machine.gd" id="7_tb00h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0jl5k"]
 radius = 17.0
@@ -47,3 +47,47 @@ color = Color(0.8, 0.180392, 0.956863, 1)
 
 [node name="NodeStateMachine" type="Node" parent="."]
 script = ExtResource("7_tb00h")
+metadata/graph_ref_version = 1
+metadata/graph_ref_scroll = Vector2(-504.545, -462)
+metadata/graph_ref_zoom = 1.0
+metadata/graph_ref_state_count = 5
+metadata/graph_ref_connections = Array[Dictionary]([{
+"from": &"state_2",
+"from_port": 0,
+"to": &"state_3",
+"to_port": 0
+}, {
+"from": &"state_0",
+"from_port": 1,
+"to": &"state_3",
+"to_port": 1
+}, {
+"from": &"state_0",
+"from_port": 0,
+"to": &"state_1",
+"to_port": 0
+}, {
+"from": &"state_4",
+"from_port": 0,
+"to": &"state_1",
+"to_port": 0
+}, {
+"from": &"state_4",
+"from_port": 1,
+"to": &"state_0",
+"to_port": 0
+}, {
+"from": &"state_1",
+"from_port": 0,
+"to": &"state_2",
+"to_port": 0
+}, {
+"from": &"state_4",
+"from_port": 0,
+"to": &"state_2",
+"to_port": 0
+}])
+metadata/graph_ref_nodes_name = [&"state_4", &"state_2", &"state_0", &"state_3", &"state_1"]
+metadata/graph_ref_nodes_info = ["Walk", "Air", "Idle", "Fall", "Jump"]
+metadata/graph_ref_nodes_mode = [1, 1, 0, 1, 1]
+metadata/graph_ref_nodes_offset = [Vector2(-410, -265.5), Vector2(199, -265.5), Vector2(-241, -133.5), Vector2(382, -134.5), Vector2(-28, -378.5)]

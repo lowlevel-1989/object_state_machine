@@ -30,7 +30,7 @@ func set_init_state(state : Object) -> void:
 	self._current_state = state
 
 	if not (
-		self._current_state.has_method("is_class_state") && \
+		self._current_state.has_method("is_class_state") and \
 			self._current_state.is_class_state()):
 		return
 
@@ -99,7 +99,7 @@ func transition_to(state: Object) -> void:
 
 func confirm_transition() -> void:
 	if not (
-		self._current_state.has_method("is_class_state") && \
+		self._current_state.has_method("is_class_state") and \
 			self._current_state.is_class_state()):
 		return
 
@@ -111,7 +111,7 @@ func confirm_transition() -> void:
 # _input_event(ev : InputEvent)
 func input(event: InputEvent) -> void:
 	if not (
-		self._current_state.has_method("is_class_state") && \
+		self._current_state.has_method("is_class_state") and \
 			self._current_state.is_class_state()):
 		return
 
@@ -121,7 +121,7 @@ func input(event: InputEvent) -> void:
 # _process(delta : float)
 func process(delta : float) -> void:
 	if not (
-		self._current_state.has_method("is_class_state") && \
+		self._current_state.has_method("is_class_state") and \
 			self._current_state.is_class_state()):
 		return
 
@@ -131,7 +131,7 @@ func process(delta : float) -> void:
 # _physics_process(delta : float)
 func physics_process(delta : float) -> void:
 	if not (
-		self._current_state.has_method("is_class_state") && \
+		self._current_state.has_method("is_class_state") and \
 			self._current_state.is_class_state()):
 		return
 
@@ -145,7 +145,7 @@ func physics_process(delta : float) -> void:
 # para evitar problemas entre versiones se cambia a Object
 func integrate_forces(state: Object) -> void:
 	if not (
-		self._current_state.has_method("is_class_state") && \
+		self._current_state.has_method("is_class_state") and \
 			self._current_state.is_class_state()):
 		return
 
