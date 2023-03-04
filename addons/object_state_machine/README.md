@@ -1,4 +1,4 @@
-# Object State Machine
+# Object State Machine 0.7.0
 
 1. Install directly from Godot Asset Library
 

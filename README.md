@@ -1,4 +1,4 @@
-# Object State Machine
+# Object State Machine 0.7.0
 
 1. Install directly from Godot Asset Library
 
@@ -72,7 +72,7 @@ extends EditorPlugin
 
 func _enter_tree() -> void:
 	# Initialization of the plugin goes here.
-	print("Object State Machine 0.6.1")
+	print("Object State Machine 0.7.0")
 
 
 func _exit_tree() -> void:
@@ -90,7 +90,7 @@ extends EditorPlugin
 
 func _enter_tree() -> void:
 	# Initialization of the plugin goes here.
-	print("Object State Machine 0.6.1")
+	print("Object State Machine 0.7.0")
 
 
 func _exit_tree() -> void:

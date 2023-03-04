@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.7.0] - 2023-02-28
+## [0.7.0] - 2023-03-04
 
 ### Added
 - Graphical state machine for the reference model
