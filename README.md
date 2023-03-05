@@ -51,13 +51,13 @@ in charge of administering the states.
 - void           StateMachine::transition_debug_disable()
 - StateAbstract  StateMachine::get_current_state()
 - StateAbstract  StateMachine::get_prev_state()
-- void           StateMachine::transition_to()
-- void           StateMachine::input()
+- void           StateMachine::transition_to(state : StateAbstract)
+- void           StateMachine::input(event : InputEvent)
 - void           StateMachine::process(delta : float)
 - void           StateMachine::physics_process(delta : float)
 - void           StateMachine::integrate_forces(state : Object)
-- void           StateMachine::is_class_state_machine()
-- void           StateMachine::is_class_state()
+- bool           StateMachine::is_class_state_machine()
+- bool           StateMachine::is_class_state()
 
 ### support Godot v3
 
