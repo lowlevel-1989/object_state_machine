@@ -1,7 +1,7 @@
 # Seguir instrucciones para agregar soporte a godot v3
-@tool  # <- Comentar   @tool para godot v3
+# @tool  # <- Comentar   @tool para godot v3
 
-# tool # <- Descomentar tool para godot v3
+tool # <- Descomentar tool para godot v3
 
 extends EditorPlugin
 

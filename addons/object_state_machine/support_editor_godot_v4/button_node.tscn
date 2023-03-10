@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cl48lbq0j4iof"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_56f3c"]
-
-[node name="ButtonNode" type="Button"]
-offset_right = 103.0
-offset_bottom = 23.0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_56f3c")
-text = "First State"
