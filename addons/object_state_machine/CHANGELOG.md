@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.7.1] - 2023-03-10
+
+### Added
+- Debug Comming Soon
+
+### Changed
+- Fix remote debug
+
 ## [0.7.0] - 2023-03-04
 
 ### Added

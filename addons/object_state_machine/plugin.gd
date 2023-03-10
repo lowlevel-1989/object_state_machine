@@ -55,9 +55,18 @@ func handles(object : Object) -> bool:
 
 # valida el objeto que seleccionaron desde el arbol de nodos
 func _handles(object: Object) -> bool:
-	return (self._graph_editor_init and (
-		object.has_method("is_class_state_machine") && \
-			object.is_class_state_machine()))
+	# desde remote, opcion de depuración todos los objetos llegan
+	# con esta clase EditorDebuggerRemoteObject
+	# fix error al seleccionar en el inspector
+	#  Invalid call. Nonexistent function 'is_class_state_machine'
+	#  in base 'ScriptEditorDebuggerInspectedObject ( godot v3)
+	#  in base 'EditorDebuggerRemoteObject          ( godot v4)
+	var _editor_debugger_inspected_object : String = "EditorDebuggerRemoteObject"
+	if _godot_version < 4:
+		_editor_debugger_inspected_object = "ScriptEditorDebuggerInspectedObject"
+
+	return (object is NodeStateMachine) and \
+		object.get_class() != _editor_debugger_inspected_object
 
 # add support virtual Godot v3
 func make_visible(visible: bool) -> void:

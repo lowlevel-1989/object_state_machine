@@ -1,4 +1,4 @@
-# Object State Machine 0.7.0
+# Object State Machine 0.7.1 ![Godot v4.x](https://img.shields.io/badge/Godot-v4.x-%23478cbf) ![Godot v3.x](https://img.shields.io/badge/Godot-v3.x-%23478cbf)
 
 1. Install directly from Godot Asset Library
 
@@ -58,42 +58,3 @@ in charge of administering the states.
 - void           StateMachine::integrate_forces(state : Object)
 - bool           StateMachine::is_class_state_machine()
 - bool           StateMachine::is_class_state()
-
-### support Godot v3
-
-file plugin.gd
-```gdscript
-# Seguir instrucciones para agregar soporte a godot v3
-@tool  # <- Comentar   @tool para godot v3
-
-# tool # <- Descomentar tool para godot v3
-
-extends EditorPlugin
-
-func _enter_tree() -> void:
-	# Initialization of the plugin goes here.
-	print("Object State Machine 0.7.0")
-
-
-func _exit_tree() -> void:
-	# Clean-up of the plugin goes here.
-	pass
-```
-leave it this way
-```gdscript
-# Seguir instrucciones para agregar soporte a godot v3
-# @tool  # <- Comentar   @tool para godot v3
-
-tool # <- Descomentar tool para godot v3
-
-extends EditorPlugin
-
-func _enter_tree() -> void:
-	# Initialization of the plugin goes here.
-	print("Object State Machine 0.7.0")
-
-
-func _exit_tree() -> void:
-	# Clean-up of the plugin goes here.
-	pass
-```
