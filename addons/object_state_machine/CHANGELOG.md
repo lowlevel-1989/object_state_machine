@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.7.2] - 2023-03-10
+
+### Changed
+- Fix Version plugin
+
 ## [0.7.1] - 2023-03-10
 
 ### Added
