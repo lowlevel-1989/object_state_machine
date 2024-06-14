@@ -52,17 +52,18 @@ func _ready():
 	get_menu_hbox().add_child(_button_new_metadata)
 	get_menu_hbox().add_child(_button_save_metadata)
 
-	_button_first_state.connect("button_down", _on_button_first_state)
-	_button_normal_state.connect("button_down", _on_button_normal_state)
-	_button_last_state.connect("button_down",  _on_button_last_state)
+	_button_first_state.button_down.connect(_on_button_first_state)
+	_button_normal_state.button_down.connect(_on_button_normal_state)
+	_button_last_state.button_down.connect(_on_button_last_state)
 
-	_button_new_metadata.connect("button_down",  _on_button_new)
-	_button_save_metadata.connect("button_down",  _on_button_save)
+	_button_new_metadata.button_down.connect(_on_button_new)
+	_button_save_metadata.button_down.connect(_on_button_save)
 
-	connect("node_selected", _on_node_selected)
-	connect("popup_request", _on_popup_request)
-	connect("connection_request", _on_connection_request)
-	connect("disconnection_request", _on_disconnection_request)
+	node_selected.connect(_on_node_selected)
+	popup_request.connect(_on_popup_request)
+	connection_request.connect(_on_connection_request)
+	disconnection_request.connect(_on_disconnection_request)
+	delete_nodes_request.connect(_delete_nodes_request)
 
 func _on_popup_request(_position : Vector2) -> void:
 	var _inv_zoom : float = 1/zoom
@@ -118,6 +119,10 @@ func _on_disconnection_request(
 	from_node: StringName, from_port: int,
 	to_node: StringName, to_port: int):
 	disconnect_node(from_node, from_port, to_node, to_port)
+
+func _delete_nodes_request(nodes):
+	self._state_seleted.delete_node()
+	_on_button_save()
 
 func _on_button_new() -> void:
 	self._state_count = 0
@@ -193,8 +198,8 @@ func load_graph() -> void:
 
 	for con in ref_connections:
 		# validar que los nodos existan
-		if con.from in node_name and con.to in node_name:
-			connect_node(con.from, con.from_port, con.to, con.to_port)
+		if con.from_node in node_name and con.to_node in node_name:
+			connect_node(con.from_node, con.from_port, con.to_node, con.to_port)
 
 func set_state_machine(state_machine : NodeStateMachine) -> void:
 	self._state_machine = state_machine

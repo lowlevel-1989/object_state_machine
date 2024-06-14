@@ -50,44 +50,45 @@ script = ExtResource("7_tb00h")
 metadata/graph_ref_version = 1
 metadata/graph_ref_scroll = Vector2(-504.545, -462)
 metadata/graph_ref_zoom = 1.0
-metadata/graph_ref_state_count = 5
+metadata/graph_ref_state_count = 6
 metadata/graph_ref_connections = Array[Dictionary]([{
-"from": &"state_2",
+"from_node": &"state_0",
 "from_port": 0,
-"to": &"state_3",
+"to_node": &"state_1",
 "to_port": 0
 }, {
-"from": &"state_0",
+"from_node": &"state_4",
+"from_port": 0,
+"to_node": &"state_1",
+"to_port": 0
+}, {
+"from_node": &"state_4",
 "from_port": 1,
-"to": &"state_3",
+"to_node": &"state_0",
+"to_port": 0
+}, {
+"from_node": &"state_1",
+"from_port": 0,
+"to_node": &"state_2",
+"to_port": 0
+}, {
+"from_node": &"state_4",
+"from_port": 0,
+"to_node": &"state_2",
+"to_port": 0
+}, {
+"from_node": &"state_2",
+"from_port": 0,
+"to_node": &"state_5",
+"to_port": 0
+}, {
+"from_node": &"state_0",
+"from_port": 1,
+"to_node": &"state_5",
 "to_port": 1
-}, {
-"from": &"state_0",
-"from_port": 0,
-"to": &"state_1",
-"to_port": 0
-}, {
-"from": &"state_4",
-"from_port": 0,
-"to": &"state_1",
-"to_port": 0
-}, {
-"from": &"state_4",
-"from_port": 1,
-"to": &"state_0",
-"to_port": 0
-}, {
-"from": &"state_1",
-"from_port": 0,
-"to": &"state_2",
-"to_port": 0
-}, {
-"from": &"state_4",
-"from_port": 0,
-"to": &"state_2",
-"to_port": 0
 }])
-metadata/graph_ref_nodes_name = [&"state_4", &"state_2", &"state_0", &"state_3", &"state_1"]
-metadata/graph_ref_nodes_info = ["Walk", "Air", "Idle", "Fall", "Jump"]
+metadata/graph_ref_nodes_name = [&"state_4", &"state_2", &"state_0", &"state_1", &"state_5"]
+metadata/graph_ref_nodes_info = ["Walk", "Air", "Idle", "Jump", "Fall
+"]
 metadata/graph_ref_nodes_mode = [1, 1, 0, 1, 1]
-metadata/graph_ref_nodes_offset = [Vector2(-410, -265.5), Vector2(199, -265.5), Vector2(-241, -133.5), Vector2(382, -134.5), Vector2(-28, -378.5)]
+metadata/graph_ref_nodes_offset = [Vector2(-410, -265.5), Vector2(199, -265.5), Vector2(-241, -133.5), Vector2(-28, -378.5), Vector2(400, -160)]

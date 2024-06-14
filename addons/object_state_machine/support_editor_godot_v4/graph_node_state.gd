@@ -7,9 +7,10 @@ var _mode_state : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.connect("close_request", _on_close_request)
+	pass
+	# self.delete_request.connect(_on_delete_request)
 
-func _on_close_request() -> void:
+func delete_node() -> void:
 	# TODO: pasar por argumento GraphEdit y evitar utilizar get_parent
 	# desconecta todas las conexiones del nodo que vamos a eliminar antes
 	# de eliminarlo
@@ -20,16 +21,16 @@ func _on_close_request() -> void:
 
 	# Eliminamos todos a los que nos conectamos
 	for con in connections:
-		if con.from == get_name():
+		if con.from_node == get_name():
 			get_parent().disconnect_node(
-				con.from, con.from_port, con.to, con.to_port)
+				con.from_node, con.from_port, con.to_node, con.to_port)
 
 	# Conectamos todos donde no estemos nosotros
 	for con in connections:
-		if get_name() in [con.from, con.to]:
+		if get_name() in [con.from_node, con.to_node]:
 			continue
 		get_parent().connect_node(
-				con.from, con.from_port, con.to, con.to_port)
+				con.from_node, con.from_port, con.to_node, con.to_port)
 
 	queue_free()
 
