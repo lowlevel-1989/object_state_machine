@@ -1,8 +1,6 @@
 # Seguir instrucciones para agregar soporte a godot v3
 @tool  # <- Comentar   @tool para godot v3
-
 # tool # <- Descomentar tool para godot v3
-
 extends EditorPlugin
 
 const GRAPH_EDITOR_PATH : String = \
@@ -20,7 +18,6 @@ var _godot_version : int
 # guarda el objeto seleccionado
 var _object_ref : NodeStateMachine
 
-
 func _enter_tree() -> void:
 	# Initialization of the plugin goes here.
 	self._godot_version = Engine.get_version_info().major
@@ -31,12 +28,10 @@ func _enter_tree() -> void:
 		return
 
 	self._graph_editor_init = true
-
-	if self._godot_version > 3:
-		self._graph_editor = load(self._graph_editor_path).instantiate()
-	else:
+	if self._godot_version < 4:
 		self._graph_editor = load(self._graph_editor_path).instance()
-
+	else:
+		self._graph_editor = load(self._graph_editor_path).instantiate()
 	self._graph_editor_button = add_control_to_bottom_panel(
 									self._graph_editor, "State Machine")
 	self._make_visible(false)
@@ -44,8 +39,8 @@ func _enter_tree() -> void:
 
 func _exit_tree() -> void:
 	if self._graph_editor_init:
+		self._graph_editor_button.queue_free()
 		remove_control_from_bottom_panel(self._graph_editor)
-		self._graph_editor_button.free()
 
 	self._graph_editor_init = false
 
