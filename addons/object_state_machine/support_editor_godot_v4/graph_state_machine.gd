@@ -46,11 +46,11 @@ func _ready():
 	_button_new_metadata.text  = "New"
 	_button_save_metadata.text = "Save"
 
-	get_zoom_hbox().add_child(_button_first_state)
-	get_zoom_hbox().add_child(_button_normal_state)
-	get_zoom_hbox().add_child(_button_last_state)
-	get_zoom_hbox().add_child(_button_new_metadata)
-	get_zoom_hbox().add_child(_button_save_metadata)
+	get_menu_hbox().add_child(_button_first_state)
+	get_menu_hbox().add_child(_button_normal_state)
+	get_menu_hbox().add_child(_button_last_state)
+	get_menu_hbox().add_child(_button_new_metadata)
+	get_menu_hbox().add_child(_button_save_metadata)
 
 	_button_first_state.connect("button_down", _on_button_first_state)
 	_button_normal_state.connect("button_down", _on_button_normal_state)
