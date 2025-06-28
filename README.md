@@ -57,28 +57,28 @@ func _ready():
     state_machine.create("PlayerSM")
 
     state_idle = CLASS_STATE_IDLE.new()
-	state_walk = CLASS_STATE_WALK.new()
-	state_air  = CLASS_STATE_AIR. new()
-	state_jump = CLASS_STATE_JUMP.new()
-	state_fall = CLASS_STATE_FALL.new()
+    state_walk = CLASS_STATE_WALK.new()
+    state_air  = CLASS_STATE_AIR. new()
+    state_jump = CLASS_STATE_JUMP.new()
+    state_fall = CLASS_STATE_FALL.new()
 
     # Assign owner and state machine to the state
-	state_idle.create(self, state_machine)
-	state_walk.create(self, state_machine)
-	state_air. create(self, state_machine)
-	state_jump.create(self, state_machine)
-	state_fall.create(self, state_machine)
+    state_idle.create(self, state_machine)
+    state_walk.create(self, state_machine)
+    state_air. create(self, state_machine)
+    state_jump.create(self, state_machine)
+    state_fall.create(self, state_machine)
 
     # Assign initial state
     state_machine.set_init_state(state_idle)
 
 func free() -> void:
-	state_machine.free()
-	state_idle.free()
-	state_walk.free()
-	state_air. free()
-	state_jump.free()
-	state_fall.free()
+    state_machine.free()
+    state_idle.free()
+    state_walk.free()
+    state_air. free()
+    state_jump.free()
+    state_fall.free()
 ```
 
 ### 2. Design your state flow
@@ -113,19 +113,19 @@ extends StateAbstract
 var player : CharacterBody2D
 
 func _enter() -> void:
-	self.player = self.get_owner()
+    self.player = self.get_owner()
 
 func _set_name() -> void:
-	self._state_name = "Idle"
+    self._state_name = "Idle"
 
 func _confirm_transition() -> void:
-	if not self.player.is_on_floor():
-		self.transition_to(self.player.state_air)
-		return
+    if not self.player.is_on_floor():
+        self.transition_to(self.player.state_air)
+        return
 
-	if Input.get_axis("ui_left", "ui_right"):
-		self.transition_to(self.player.state_walk)
-		return
+    if Input.get_axis("ui_left", "ui_right"):
+        self.transition_to(self.player.state_walk)
+        return
 ```
 
 ### NodeStateMachine
