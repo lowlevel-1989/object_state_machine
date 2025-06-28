@@ -73,7 +73,7 @@ func _ready():
     state_machine.set_init_state(state_idle)
 
 func _physics_process(delta : float) -> void:
-	state_machine.physics_process(delta)
+    state_machine.physics_process(delta)
 
 func free() -> void:
     state_machine.free()
