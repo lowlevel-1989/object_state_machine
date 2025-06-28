@@ -120,11 +120,11 @@ func _set_name() -> void:
 
 func _confirm_transition() -> void:
 	if not self.player.is_on_floor():
-		self.transition_to(self.player.air_state)
+		self.transition_to(self.player.state_air)
 		return
 
 	if Input.get_axis("ui_left", "ui_right"):
-		self.transition_to(self.player.walk_state)
+		self.transition_to(self.player.state_walk)
 		return
 ```
 
