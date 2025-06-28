@@ -98,12 +98,13 @@ func transition_to(state: Object) -> void:
 		self._transition_debug_report()
 
 func confirm_transition() -> void:
-	if not (
+	if self._current_state and not (
 		self._current_state.has_method("is_class_state") and \
 			self._current_state.is_class_state()):
 		return
 
-	self._current_state._confirm_transition()
+	if self._current_state:
+		self._current_state._confirm_transition()
 
 # metodo publico, se espera que se utilice en estos metodos
 # _unhandled_input(ev : InputEvent)

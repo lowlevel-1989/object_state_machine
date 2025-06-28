@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://dch34du25f3cl"]
+
+[ext_resource type="Script" uid="uid://cy3qbtvjtjyyl" path="res://addons/object_state_machine/demo/player/player.gd" id="1_kwc7e"]
+[ext_resource type="Script" uid="uid://bavsiwgr3bhwf" path="res://addons/object_state_machine/demo/player/state/state_idle.gd" id="2_og5kh"]
+[ext_resource type="Script" uid="uid://dtuae5w4elt68" path="res://addons/object_state_machine/demo/player/state/state_walk.gd" id="3_jxpl0"]
+[ext_resource type="Script" uid="uid://busjd6kd7njgw" path="res://addons/object_state_machine/demo/player/state/state_air.gd" id="4_sxttk"]
+[ext_resource type="Script" uid="uid://de0jq85ql7eno" path="res://addons/object_state_machine/demo/player/state/state_jump.gd" id="5_ukw1p"]
+[ext_resource type="Script" uid="uid://c1n5u7oojdusa" path="res://addons/object_state_machine/demo/player/state/state_fall.gd" id="6_glbth"]
+[ext_resource type="Script" uid="uid://bcn4ugiraetij" path="res://addons/object_state_machine/node_state_machine.gd" id="7_tb00h"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0jl5k"]
+radius = 17.0
+height = 74.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_kwc7e")
+CLASS_STATE_IDLE = ExtResource("2_og5kh")
+CLASS_STATE_WALK = ExtResource("3_jxpl0")
+CLASS_STATE_AIR = ExtResource("4_sxttk")
+CLASS_STATE_JUMP = ExtResource("5_ukw1p")
+CLASS_STATE_FALL = ExtResource("6_glbth")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -20.0
+offset_top = -36.0
+offset_right = 20.0
+offset_bottom = 36.0
+color = Color(0.539062, 0.163655, 0.456587, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_0jl5k")
+
+[node name="LabelState" type="Label" parent="."]
+offset_left = -47.0
+offset_top = -63.0
+offset_right = 49.0
+offset_bottom = -37.0
+text = "state"
+horizontal_alignment = 1
+
+[node name="DirectionDebug" type="ColorRect" parent="."]
+offset_left = -30.0
+offset_top = -2.0
+offset_right = 30.0
+offset_bottom = 2.0
+color = Color(0.8, 0.180392, 0.956863, 1)
+
+[node name="NodeStateMachine" type="Node" parent="."]
+script = ExtResource("7_tb00h")

@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.0.0a] - 2025-06-28
+
+### Removed
+- Graphical state machine for the reference model
+- Separation between Godot v3 and Godot v4 folders
+- Godot v3 demo (escenas, scripts, imágenes)
+
+### Changed
+- Unified Godot v3 and Godot v4 support into a single codebase (edit `plugin.gd` to switch version)
+- Improved documentation (`README.md`, internal usage)
+- Demo restructured: shared player and states folder for both versions
+- Added example of state documentation in the CharacterBody2D demo
+- Cleaned up unused demo and screenshot files
+
 ## [0.7.2] - 2023-03-10
 
 ### Changed

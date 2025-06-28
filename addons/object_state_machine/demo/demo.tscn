@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgq23jm0qh12t"]
+
+[ext_resource type="Texture2D" uid="uid://byuhgsajxx5g7" path="res://addons/object_state_machine/demo/SM.png" id="1_ruj1g"]
+[ext_resource type="PackedScene" uid="uid://dch34du25f3cl" path="res://addons/object_state_machine/demo/player/player.tscn" id="2_3r0m8"]
+
+[sub_resource type="GDScript" id="GDScript_57odg"]
+resource_name = "physics"
+script/source = "extends CollisionPolygon2D
+
+func _draw() -> void:
+	draw_colored_polygon(polygon, Color.DARK_CYAN)
+"
+
+[node name="Demo" type="Node2D"]
+
+[node name="Sm" type="Sprite2D" parent="."]
+modulate = Color(0.71, 0.38, 0.15, 1)
+position = Vector2(509, 166)
+scale = Vector2(0.444, 0.444)
+texture = ExtResource("1_ruj1g")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_3r0m8")]
+position = Vector2(596, 157)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(3, 644, 2, 278, 103, 277, 101, 520, 433, 520, 545, 431, 656, 431, 739, 513, 836, 513, 926, 247, 1153, 248, 1155, 641)
+script = SubResource("GDScript_57odg")
