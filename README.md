@@ -137,9 +137,9 @@ func _confirm_transition() -> void:
 to define a new state you must create a class from the StateAbstract class and define its behavior.
 
 ##### Public methods
-- void    StateAbstract::create(owner·:·Node,·state_machine·:·StateMachine)
+- void    StateAbstract::create(owner : Node, state_machine : StateMachine)
 - Node    StateAbstract::get_owner()
-- void    StateAbstract::transition_to(state:·StateAbstract)
+- void    StateAbstract::transition_to(state : StateAbstract)
 - String  StateAbstract::get_name()
 - bool    StateAbstract::is_class_state_machine()
 - bool    StateAbstract::is_class_state()
