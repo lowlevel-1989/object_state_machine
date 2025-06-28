@@ -107,7 +107,7 @@ Transitions:
 
 ### 3. Create state classes
 ```gdscript
-# idle.gd (extends StateAbstract, not Node)
+# state_idle.gd (extends StateAbstract, not Node)
 extends StateAbstract
 
 var player : CharacterBody2D
@@ -127,10 +127,6 @@ func _confirm_transition() -> void:
 		self.transition_to(self.player.walk_state)
 		return
 ```
-
-## Thanks
-
-- [nice and good online](https://github.com/niceandgoodonline)
 
 ### NodeStateMachine
 
@@ -180,3 +176,6 @@ in charge of administering the states.
 - void           StateMachine::integrate_forces(state : Object)
 - bool           StateMachine::is_class_state_machine()
 - bool           StateMachine::is_class_state()
+
+## Thanks
+- [nice and good online](https://github.com/niceandgoodonline)
