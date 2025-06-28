@@ -128,6 +128,10 @@ func _confirm_transition() -> void:
 		return
 ```
 
+## Thanks
+
+- [nice and good online](https://github.com/niceandgoodonline)
+
 ### NodeStateMachine
 
 - To create a state machine add the NodeStateMachine to the desired object as shown in the demo.
