@@ -8,6 +8,8 @@
 - **Optimized performance** - Avoids scene tree overhead for state transitions
 - **Clean architecture** - Keep your scene tree simple while managing complex behaviors
 
+[!["Buy Me A Coffee"](coffee.png)](https://ko-fi.com/lowlevel1989)
+
 ## How It Works
 1. **Add a single node** to your scene (`NodeStateMachine`)
 2. **Define states as scripts** (extending `StateAbstract`)
@@ -22,8 +24,6 @@ Create state machines to control:
 - **Game Flow**: Level loading, Cutscenes, Dialogue
 - **Complex object states**: Treasure chest (locked, unlocking, open, empty), Security system (armed, disarmed, triggered)
 - **Building mechanics**: Placement, Rotation, Connection, Demolition modes
-
-[!["Buy Me A Coffee"](coffee.png)](https://ko-fi.com/lowlevel1989)
 
 ## Installation
 1. **Asset Library**: Install directly from Godot Asset Library  
