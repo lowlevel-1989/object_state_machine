@@ -1,4 +1,4 @@
-![logo](logo.jpg)
+![logo](logo.png)
 
 # Object State Machine 1.0.0 ![Godot v4.x](https://img.shields.io/badge/Godot-v4.x-%23478cbf) ![Godot v3.x](https://img.shields.io/badge/Godot-v3.x-%23478cbf)
 
