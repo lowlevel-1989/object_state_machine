@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.0a] - 2025-06-28
+## [1.0.0] - 2025-06-29
 
 ### Removed
 - Graphical state machine for the reference model

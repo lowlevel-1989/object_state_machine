@@ -1,4 +1,6 @@
-# Object State Machine 1.0.0a ![Godot v4.x](https://img.shields.io/badge/Godot-v4.x-%23478cbf) ![Godot v3.x](https://img.shields.io/badge/Godot-v3.x-%23478cbf)
+![logo](logo.jpg)
+
+# Object State Machine 1.0.0 ![Godot v4.x](https://img.shields.io/badge/Godot-v4.x-%23478cbf) ![Godot v3.x](https://img.shields.io/badge/Godot-v3.x-%23478cbf)
 
 **A hybrid state machine solution for Godot:**  
 - **Single node in scene tree** - Add just one `NodeStateMachine` node to your scene
@@ -182,3 +184,4 @@ in charge of administering the states.
 
 ## Thanks
 - [nice and good online](https://github.com/niceandgoodonline)
+- [Bloomtasy](https://instagram.com/airi_magikal)
